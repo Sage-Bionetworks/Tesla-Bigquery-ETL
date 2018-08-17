@@ -31,9 +31,9 @@ def filter_df_columns(df, input_columns, output_columns):
 def format_column_values(df):
     """Format all column values."""
     for column in df.columns:
-        if column not in COLUMN_DICT.keys():
+        if column not in COLUMN_TO_FUNCTION.keys():
             raise Exception("Column has no function for processing.")
-        func = COLUMN_DICT[column]
+        func = COLUMN_TO_FUNCTION[column]
         df = func(df)
     return(df)
 
@@ -134,7 +134,7 @@ process_reactivity_assay_result_column = partial(
     column="REACTIVITY_ASSAY_RESULT",
     values=["+", "-"])
 
-COLUMN_DICT = {
+COLUMN_TO_FUNCTION = {
     "PATIENT": process_patient_column,
     "ALT_EPI_SEQ": process_alt_epi_seq_column,
     "HLA_ALLELE": process_hla_allele_column,
