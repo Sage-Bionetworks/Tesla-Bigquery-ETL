@@ -1,0 +1,22 @@
+[
+    {
+        "name" : "PATIENT",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "ALT_EPI_SEQ",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "HLA_ALLELE",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "MICROFLUIDCS_ASSAY_RESULT",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    }
+]

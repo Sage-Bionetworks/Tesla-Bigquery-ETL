@@ -1,0 +1,17 @@
+[
+    {
+        "name" : "PATIENT",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "ALT_EPI_SEQ",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "REACTIVITY_ASSAY_RESULT",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    }
+]

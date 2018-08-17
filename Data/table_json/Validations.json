@@ -1,0 +1,52 @@
+[
+    {
+        "name" : "PATIENT",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "ALT_EPI_SEQ",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "HLA_ALLELE",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "PMHC",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "MS_PEPTIDE_ID",
+        "type" : "INTEGER",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "FLOW1_ASSAY_RESULT",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "FLOW2_ASSAY_RESULT",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "MICROFLUIDCS_ASSAY_RESULT",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+     {
+        "name" : "REACTIVITY_ASSAY_RESULT",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "BINDING_ASSAY_RESULT",
+        "type" : "INTEGER",
+        "mode" : "NULLABLE"
+    }
+]
