@@ -96,7 +96,9 @@ process_hla_allele_column = partial(
 
 def coerce_column_to_int(df, column):
     """Coerces column in df to integer."""
-    df[column] = pd.to_numeric(df[column], errors='coerce').round().astype(int)
+    df[column] = pd.to_numeric(df[column], errors='coerce').round()
+    df = df.dropna()
+    df[column] = df[column].astype('int')
     return(df)
 
 

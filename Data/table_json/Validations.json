@@ -2,22 +2,22 @@
     {
         "name" : "PATIENT",
         "type" : "STRING",
-        "mode" : "REQUIRED"
+        "mode" : "NULLABLE"
     },
     {
         "name" : "ALT_EPI_SEQ",
         "type" : "STRING",
-        "mode" : "REQUIRED"
+        "mode" : "NULLABLE"
     },
     {
         "name" : "HLA_ALLELE",
         "type" : "STRING",
-        "mode" : "REQUIRED"
+        "mode" : "NULLABLE"
     },
     {
         "name" : "PMHC",
         "type" : "STRING",
-        "mode" : "REQUIRED"
+        "mode" : "NULLABLE"
     },
     {
         "name" : "MS_PEPTIDE_ID",

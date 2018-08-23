@@ -2,16 +2,16 @@
     {
         "name" : "PATIENT",
         "type" : "STRING",
-        "mode" : "REQUIRED"
+        "mode" : "NULLABLE"
     },
     {
         "name" : "ALT_EPI_SEQ",
         "type" : "STRING",
-        "mode" : "REQUIRED"
+        "mode" : "NULLABLE"
     },
     {
         "name" : "REACTIVITY_ASSAY_RESULT",
         "type" : "STRING",
-        "mode" : "REQUIRED"
+        "mode" : "NULLABLE"
     }
 ]
