@@ -15,7 +15,7 @@
         "mode" : "NULLABLE"
     },
     {
-        "name" : "FLOW1_ASSAY_RESULT",
+        "name" : "TCR_BINDING_BY_MICROFLUIDICS",
         "type" : "STRING",
         "mode" : "NULLABLE"
     }

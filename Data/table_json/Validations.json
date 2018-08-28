@@ -25,27 +25,27 @@
         "mode" : "NULLABLE"
     },
     {
-        "name" : "FLOW1_ASSAY_RESULT",
+        "name" : "TCR_BINDING_BY_FLOW_I",
         "type" : "STRING",
         "mode" : "NULLABLE"
     },
     {
-        "name" : "FLOW2_ASSAY_RESULT",
+        "name" : "TCR_BINDING_BY_FLOW_II",
         "type" : "STRING",
         "mode" : "NULLABLE"
     },
     {
-        "name" : "MICROFLUIDCS_ASSAY_RESULT",
+        "name" : "TCR_BINDING_BY_MICROFLUIDICS",
         "type" : "STRING",
         "mode" : "NULLABLE"
     },
      {
-        "name" : "REACTIVITY_ASSAY_RESULT",
+        "name" : "T_CELL_REACTIVITY_SCREEN",
         "type" : "STRING",
         "mode" : "NULLABLE"
     },
     {
-        "name" : "BINDING_ASSAY_RESULT",
+        "name" : "MHC_BINDING_ASSAY",
         "type" : "INTEGER",
         "mode" : "NULLABLE"
     }

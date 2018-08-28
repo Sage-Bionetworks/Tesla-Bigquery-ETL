@@ -10,12 +10,7 @@
         "mode" : "NULLABLE"
     },
     {
-        "name" : "HLA_ALLELE",
-        "type" : "STRING",
-        "mode" : "NULLABLE"
-    },
-    {
-        "name" : "FLOW2_ASSAY_RESULT",
+        "name" : "T_CELL_REACTIVITY_SCREEN",
         "type" : "STRING",
         "mode" : "NULLABLE"
     }

@@ -10,7 +10,12 @@
         "mode" : "NULLABLE"
     },
     {
-        "name" : "REACTIVITY_ASSAY_RESULT",
+        "name" : "HLA_ALLELE",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "TCR_BINDING_BY_FLOW_II",
         "type" : "STRING",
         "mode" : "NULLABLE"
     }

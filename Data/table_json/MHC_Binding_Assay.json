@@ -15,7 +15,7 @@
         "mode" : "NULLABLE"
     },
     {
-        "name" : "BINDING_ASSAY_RESULT",
+        "name" : "MHC_BINDING_ASSAY",
         "type" : "INTEGER",
         "mode" : "NULLABLE"
     }

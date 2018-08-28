@@ -32,7 +32,7 @@ def format_column_values(df):
     """Format all column values."""
     for column in df.columns:
         if column not in COLUMN_TO_FUNCTION.keys():
-            raise Exception("Column has no function for processing.")
+            raise Exception("Column has no function for processing.", column)
         func = COLUMN_TO_FUNCTION[column]
         df = func(df)
     return(df)
@@ -105,8 +105,8 @@ def coerce_column_to_int(df, column):
 process_ms_peptide_id_column = partial(
     coerce_column_to_int, column="MS_PEPTIDE_ID")
 
-process_binding_assay_result_column = partial(
-    coerce_column_to_int, column="BINDING_ASSAY_RESULT")
+process_mhc_binding_assay_column = partial(
+    coerce_column_to_int, column="MHC_BINDING_ASSAY")
 
 
 def enforce_enumeration_on_column(df, column, values):
@@ -116,24 +116,24 @@ def enforce_enumeration_on_column(df, column, values):
     return(df)
 
 
-process_flow1_assay_result_column = partial(
+process_tcr_binding_by_flow_i_column = partial(
     enforce_enumeration_on_column,
-    column="FLOW1_ASSAY_RESULT",
+    column="TCR_BINDING_BY_FLOW_I",
     values=["+", "-"])
 
-process_flow2_assay_result_column = partial(
+process_tcr_binding_by_flow_ii_column = partial(
     enforce_enumeration_on_column,
-    column="FLOW2_ASSAY_RESULT",
+    column="TCR_BINDING_BY_FLOW_II",
     values=["+", "-"])
 
-process_microfluids_assay_result_column = partial(
+process_tcr_binding_by_microfluidics_column = partial(
     enforce_enumeration_on_column,
-    column="MICROFLUIDCS_ASSAY_RESULT",
+    column="TCR_BINDING_BY_MICROFLUIDICS",
     values=["+", "-"])
 
-process_reactivity_assay_result_column = partial(
+process_t_cell_reactivity_screen_column = partial(
     enforce_enumeration_on_column,
-    column="REACTIVITY_ASSAY_RESULT",
+    column="T_CELL_REACTIVITY_SCREEN",
     values=["+", "-"])
 
 COLUMN_TO_FUNCTION = {
@@ -141,9 +141,10 @@ COLUMN_TO_FUNCTION = {
     "ALT_EPI_SEQ": process_alt_epi_seq_column,
     "HLA_ALLELE": process_hla_allele_column,
     "MS_PEPTIDE_ID": process_ms_peptide_id_column,
-    "BINDING_ASSAY_RESULT": process_binding_assay_result_column,
-    "FLOW1_ASSAY_RESULT": process_flow1_assay_result_column,
-    "FLOW2_ASSAY_RESULT": process_flow2_assay_result_column,
-    "MICROFLUIDCS_ASSAY_RESULT": process_microfluids_assay_result_column,
-    "REACTIVITY_ASSAY_RESULT": process_reactivity_assay_result_column,
+    "MHC_BINDING_ASSAY": process_mhc_binding_assay_column,
+    "TCR_BINDING_BY_FLOW_I": process_tcr_binding_by_flow_i_column,
+    "TCR_BINDING_BY_FLOW_II": process_tcr_binding_by_flow_ii_column,
+    "TCR_BINDING_BY_MICROFLUIDICS":
+    process_tcr_binding_by_microfluidics_column,
+    "T_CELL_REACTIVITY_SCREEN": process_t_cell_reactivity_screen_column,
 }

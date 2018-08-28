@@ -29,12 +29,12 @@ class TestProcessingDF(unittest.TestCase):
                 self.test_df1,
                 ["pat", "epi", "hla", "assay2"],
                 ["PATIENT", "ALT_EPI_SEQ", "HLA_ALLELE",
-                 "BINDING_ASSAY_RESULT"]),
+                 "MHC_BINDING_ASSAY"]),
             pd.DataFrame({
                 "PATIENT": ["Patient_4", "Patient_8"],
                 "ALT_EPI_SEQ": ["ASSSD", "GHGG"],
                 "HLA_ALLELE": ["A0201", "B0201"],
-                "BINDING_ASSAY_RESULT": [5, 10]}),
+                "MHC_BINDING_ASSAY": [5, 10]}),
             check_like=True)
 
 
@@ -56,8 +56,8 @@ class TestProcessingColumns(unittest.TestCase):
             pd.DataFrame({"MS_PEPTIDE_ID": [1, 2]}))
         assert_frame_equal(
             vp.format_column_values(
-                pd.DataFrame({"FLOW1_ASSAY_RESULT": ["+", "na"]})),
-            pd.DataFrame({"FLOW1_ASSAY_RESULT": ["+", None]}))
+                pd.DataFrame({"TCR_BINDING_BY_FLOW_I": ["+", "na"]})),
+            pd.DataFrame({"TCR_BINDING_BY_FLOW_I": ["+", None]}))
         with self.assertRaises(Exception):
             vp.format_column_values(
                 pd.DataFrame({"FLOW3_ASSAY_RESULT": ["+", "na"]}))
@@ -79,9 +79,6 @@ class TestProcessingColumns(unittest.TestCase):
         assert_frame_equal(vp.coerce_column_to_int(
             pd.DataFrame({"col": [1.9, 2.9]}), "col"),
             pd.DataFrame({"col": [2, 3]}))
-        with self.assertRaises(Exception):
-            vp.coerce_column_to_int(
-                pd.DataFrame({"col": ["val1", "val2"]}), "col")
 
     def test_enforce_enumeration_on_column(self):
         """Docstring."""
