@@ -20,33 +20,23 @@
         "mode" : "NULLABLE"
     },
     {
-        "name" : "MS_PEPTIDE_ID",
-        "type" : "INTEGER",
-        "mode" : "NULLABLE"
-    },
-    {
-        "name" : "TCR_BINDING_BY_FLOW_I",
+        "name" : "TCR_FLOW_I",
         "type" : "STRING",
         "mode" : "NULLABLE"
     },
     {
-        "name" : "TCR_BINDING_BY_FLOW_II",
+        "name" : "TCR_FLOW_II",
         "type" : "STRING",
         "mode" : "NULLABLE"
     },
     {
-        "name" : "TCR_BINDING_BY_MICROFLUIDICS",
-        "type" : "STRING",
-        "mode" : "NULLABLE"
-    },
-     {
-        "name" : "T_CELL_REACTIVITY_SCREEN",
+        "name" : "TCR_BINDING",
         "type" : "STRING",
         "mode" : "NULLABLE"
     },
     {
-        "name" : "MHC_BINDING_ASSAY",
-        "type" : "INTEGER",
+        "name" : "LJI_BINDING",
+        "type" : "FLOAT",
         "mode" : "NULLABLE"
     }
 ]

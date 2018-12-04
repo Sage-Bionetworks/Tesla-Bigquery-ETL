@@ -10,8 +10,8 @@
         "mode" : "NULLABLE"
     },
     {
-        "name" : "MS_PEPTIDE_ID",
-        "type" : "INTEGER",
+        "name" : "TCELL_REACTIVITY",
+        "type" : "STRING",
         "mode" : "NULLABLE"
     }
 ]
