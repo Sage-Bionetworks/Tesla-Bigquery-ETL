@@ -16,7 +16,8 @@ df <-
     purrr::map(create_df_from_synapse_id) %>% 
     purrr::map(dplyr::mutate, PATIENT = as.character(PATIENT)) %>% 
     dplyr::bind_rows() %>% 
-    dplyr::mutate(HLA_ALLELE = stringr::str_remove_all(HLA_ALLELE, "[:punct:]"))
+    dplyr::mutate(HLA_ALLELE = stringr::str_remove_all(HLA_ALLELE, "[:punct:]")) %>% 
+    dplyr::mutate(PATIENT = stringr::str_c("Patient_", PATIENT))
 
 epitope_df <- df %>% 
     dplyr::select(PATIENT, ALT_EPI_SEQ, TCELL_REACTIVITY) %>% 

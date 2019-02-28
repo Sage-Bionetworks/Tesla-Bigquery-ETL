@@ -1,0 +1,52 @@
+[
+    {
+        "name" : "STEP_NAME",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "SUBMISSION_ID",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "USED",
+        "type" : "BOOL",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "CHANGED",
+        "type" : "BOOL",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "COMMENT",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "PARAMETER_NAME",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "RELATIONSHIP",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "VALUE",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "VALUES",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "UNIT",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    }
+]

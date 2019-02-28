@@ -13,7 +13,7 @@ create_df_from_synapse_id <- function(syn_id, location = NULL, unzip = F, ...){
     if(unzip) path <- stringr::str_c("zcat ", path)
     path %>% 
         data.table::fread(...) %>% 
-        dplyr::as_data_frame() 
+        dplyr::as_tibble() 
 }
 
 download_from_synapse <- function(syn_id, location = NULL){
@@ -37,12 +37,12 @@ upload_file_to_synapse <- function(
 }
 
 get_file_df_from_synapse_dir_id <- function(syn_id){
-    str_c('select id, name from file where parentId=="', syn_id, '"') %>% 
-        synapser::synQuery() %>%
-        magrittr::use_series("results") %>% 
+    syn_id %>% 
+        synapser::synGetChildren(includeTypes=list("file")) %>% 
+        as.list() %>% 
         purrr::map(data.frame) %>% 
         dplyr::bind_rows() %>% 
-        tibble::as_data_frame() 
+        tibble::as_tibble()
 }
 
 
@@ -71,7 +71,7 @@ matrix_to_df <- function(matrix, new_col){
     matrix %>% 
         data.frame() %>% 
         tibble::rownames_to_column(new_col) %>% 
-        tibble::as_data_frame()
+        tibble::as_tibble()
 }
 
 

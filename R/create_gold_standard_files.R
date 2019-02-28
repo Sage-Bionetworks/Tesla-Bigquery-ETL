@@ -13,8 +13,8 @@ source("utils.R")
 
 
 training_patients <- c("1", "2", "10", "103", "210")
-testing_patients <- c("4", "11", "12", "101", "212")
-validation_patients <- c("5", "7", "8", "9", "102")
+testing_patients <- c("4", "5", "7", "11", "12", "101", "212")
+validation_patients <- c("8", "9", "102")
 
 round1_df <- round1_id %>% 
     create_df_from_synapse_id() %>% 

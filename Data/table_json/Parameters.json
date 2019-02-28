@@ -1,0 +1,42 @@
+[
+    {
+        "name" : "PATIENT",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "ALT_EPI_SEQ",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "HLA_ALLELE",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "PMHC",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "TCR_FLOW_I",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "TCR_FLOW_II",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "TCR_BINDING",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "LJI_BINDING",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    }
+]
