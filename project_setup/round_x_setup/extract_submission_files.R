@@ -71,11 +71,6 @@ download_and_unzip_file <- function(id){
 
 upload_files_to_synpase <- function(SUBMISSION_ID, TEAM, PATIENT_ID, prefix){
     
-    SUBMISSION_ID <- synapse_file_df$SUBMISSION_ID[[1]]
-    TEAM <- synapse_file_df$TEAM[[1]]
-    PATIENT_ID <- synapse_file_df$PATIENT_ID[[1]]
-    prefix <- synapse_file_df$prefix[[1]]
-    
     anno_list <- list(
         "submissionId" = SUBMISSION_ID,
         "team" = TEAM,
@@ -131,4 +126,5 @@ roundx_submision_df <-
     synapser::synBuildTable("Round X Submissions", "syn8082860", .) %>% 
     synapser::synStore()
 
+setwd("../")
 file.remove("temp_dir")
