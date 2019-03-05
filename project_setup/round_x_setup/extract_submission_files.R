@@ -3,7 +3,6 @@
 library(synapser)
 library(tidyverse)
 library(magrittr)
-library(synapserutils)
 library(lubridate)
 
 source("../../utils.R")
@@ -42,21 +41,7 @@ tesla_team_df <- "SELECT * from syn8220615" %>%
     dplyr::select(realTeam, alias) %>% 
     magrittr::set_colnames(c("team", "TEAM"))
 
-roundx_df <- 
-    dplyr::bind_rows(roundx_testing_df, roundx_validation_df) %>% 
-    dplyr::left_join(tesla_team_df, by = "team") %>% 
-    dplyr::select(-team) %>% 
-    dplyr::bind_rows(roundx_training_df) %>% 
-    dplyr::mutate(patientId = as.character(patientId)) %>% 
-    dplyr::mutate(PATIENT_ID = mutate_roundx_patient_ids(patientId)) %>% 
-    dplyr::select(-patientId) %>% 
-    dplyr::mutate(ROUND = "x") %>% 
-    dplyr::mutate(SUBMITTED_LATE = FALSE) %>% 
-    dplyr::rename(SUBMISSION_ID = objectId) %>% 
-    dplyr::mutate(SUBMISSION_ID = as.character(SUBMISSION_ID)) %>% 
-    dplyr::mutate(DATETIME = lubridate::as_datetime(createdOn / 1000)) %>% 
-    dplyr::select(-createdOn) %>% 
-    dplyr::rename(AUPRC = auprc)
+
 
 download_and_unzip_file <- function(id){
     submission <- synapser::synGetSubmission(id)
@@ -69,16 +54,18 @@ download_and_unzip_file <- function(id){
 }
 
 
-upload_files_to_synpase <- function(SUBMISSION_ID, TEAM, PATIENT_ID, prefix){
+upload_files_to_synpase <- function(objectId, TEAM, patientId, prefix){
     
     anno_list <- list(
-        "submissionId" = SUBMISSION_ID,
+        "submissionId" = objectId,
         "team" = TEAM,
-        "patientId" = PATIENT_ID,
+        "patientId" = patientId,
         "round" = "x"
     )
     
-    download_and_unzip_file(SUBMISSION_ID)
+    print(anno_list)
+    
+    download_and_unzip_file(objectId)
     
     file_df <- 
         list.files() %>% 
@@ -102,29 +89,23 @@ upload_files_to_synpase <- function(SUBMISSION_ID, TEAM, PATIENT_ID, prefix){
             ret = "syn_id") %>% 
         unlist
     
-    purrr::map(list.files(), file.remove)
-    
-    result_list <- file_df %>% 
-        dplyr::select(file_name) %>% 
-        dplyr::mutate(ids = synapse_ids) %>% 
-        tidyr::spread(key = "file_name", value = "ids") %>% 
-        dplyr::mutate("SUBMISSION_ID" = SUBMISSION_ID)
+    system("rm -rf *")
 }
 
-synapse_file_df <- roundx_df %>% 
+roundx_df <- 
+    dplyr::bind_rows(roundx_testing_df, roundx_validation_df) %>% 
+    dplyr::left_join(tesla_team_df, by = "team") %>% 
+    dplyr::select(-team) %>% 
+    dplyr::bind_rows(roundx_training_df) %>% 
+    dplyr::mutate(patientId = as.character(patientId)) %>% 
+    dplyr::mutate(DATETIME = lubridate::as_datetime(createdOn / 1000)) %>% 
     dplyr::arrange(DATETIME) %>% 
-    dplyr::group_by(TEAM, PATIENT_ID) %>% 
+    dplyr::group_by(TEAM, patientId) %>% 
     dplyr::mutate(num = 1:n()) %>% 
     dplyr::ungroup() %>% 
-    dplyr::mutate(prefix = stringr::str_c(TEAM, PATIENT_ID, num, sep = "_")) %>% 
-    dplyr::select(SUBMISSION_ID, TEAM, PATIENT_ID, prefix) %>% 
-    purrr::pmap(upload_files_to_synpase) %>%
-    dplyr::bind_rows()
-    
-roundx_submision_df <- 
-    dplyr::left_join(roundx_df, synapse_file_df, by = "SUBMISSION_ID") %>% 
-    synapser::synBuildTable("Round X Submissions", "syn8082860", .) %>% 
-    synapser::synStore()
+    dplyr::mutate(prefix = stringr::str_c(TEAM, patientId, num, sep = "_")) %>% 
+    dplyr::select(objectId, TEAM, patientId, prefix) %>% 
+    purrr::pmap(upload_files_to_synpase) 
 
 setwd("../")
 file.remove("temp_dir")
