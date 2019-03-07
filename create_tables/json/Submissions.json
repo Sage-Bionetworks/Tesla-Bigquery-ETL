@@ -1,0 +1,77 @@
+[
+    {
+        "name" : "SUBMISSION_ID",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "PATIENT_ID",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "TEAM",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "DATETIME",
+        "type" : "DATETIME",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "ROUND",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {    
+        "name" : "AUPRC",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    },
+    {    
+        "name" : "SUBMITTED_LATE",
+        "type" : "BOOL",
+        "mode" : "REQUIRED"
+    },
+    {    
+        "name" : "FASTQ_RANKED_FILE",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {    
+        "name" : "FASTQ_UNRANKED_FILE",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {    
+        "name" : "VCF_RANKED_FILE",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {    
+        "name" : "VCF_UNRANKED_FILE",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {    
+        "name" : "VCF_FILE",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {    
+        "name" : "YAML_FILE",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {    
+        "name" : "KEY_FILE",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {    
+        "name" : "STEP_FILE",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    }
+]
