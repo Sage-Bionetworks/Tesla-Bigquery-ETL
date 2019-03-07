@@ -31,7 +31,7 @@
     },
     {    
         "name" : "SOURCE_ROW_N",
-        "type" : "INTEGER",
+        "type" : "STRING",
         "mode" : "REQUIRED"
     }
 ]

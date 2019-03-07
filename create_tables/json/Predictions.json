@@ -91,7 +91,7 @@
     },
     {
         "name" : "STEP_ID",
-        "type" : "INTEGER",
+        "type" : "STRING",
         "mode" : "NULLABLE"
     }
 ]
