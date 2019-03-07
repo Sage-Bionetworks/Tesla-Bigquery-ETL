@@ -62,7 +62,8 @@ create_variant_table <- function(args){
         dplyr::mutate(CHROM = stringr::str_remove_all(CHROM, "chr")) %>% 
         dplyr::mutate(CHROM = stringr::str_remove_all(CHROM, "CHR")) %>% 
         dplyr::mutate(VARIANT_ID = stringr::str_c(args$submissionId, "_", VAR_ID)) %>% 
-        dplyr::select(-VAR_ID)
+        dplyr::select(-VAR_ID) %>% 
+        dplyr::mutate(SUBMISSION_ID = args$submissionId)
 }
 
 
@@ -96,7 +97,7 @@ check_columns <- function(df, required_cols){
     missing_columns <- required_cols[!required_cols %in% colnames(df)]
     if(length(missing_columns > 0)){
         stop("df has missing columns: ",
-             str_c(missing_columns, collapse = ", "))
+            stringr:: str_c(missing_columns, collapse = ", "))
     } 
 }
 
@@ -106,4 +107,13 @@ df <- submission_df %>%
     dplyr::group_by(submissionId) %>%
     dplyr::group_split() %>%
     purrr::map(create_variant_tables) %>% 
-    bind_rows
+    dplyr::bind_rows()
+
+tbl <- bq_table("neoepitopes", "Version_3", table = "Variants")
+
+bq_table_upload(tbl, df, write_disposition = "WRITE_APPEND")
+
+
+
+
+

@@ -1,5 +1,4 @@
 library(synapser)
-library(bigrquery)
 library(tidyverse)
 library(magrittr)
 library(yaml)
@@ -112,8 +111,7 @@ mutate_col_if_exists <- function(df, old_col, new_col, func, ...){
 }
 
 
-dfs <- submission_df %>%
-    slice(300:310) %>% 
+dfs <- submission_df %>% 
     dplyr::ungroup() %>%
     dplyr::group_by(submissionId) %>%
     dplyr::group_split() %>%
@@ -135,11 +133,9 @@ steps_df <- dfs %>%
         "STEP_NAME",
         "USED", 
         "CHANGED", 
-        "COMMENT")) 
-
-# %>% 
-#     dplyr::mutate(COMMENT2 = map(COMMENT, change_to_na)) %>% 
-#     tidyr::unnest()
+        "COMMENT")) %>% 
+    dplyr::mutate(COMMENT = map(COMMENT, change_to_na)) %>%
+    tidyr::unnest()
 
 
 
@@ -157,10 +153,8 @@ parameters_df <- dfs %>%
         "VALUE", 
         "UNIT"))
 
-step_tbl <- bq_table("neoepitopes", "Version_3", table = "T_Steps")
-res <- bq_table_upload(step_tbl, steps_df, write_disposition = "WRITE_APPEND")
+write_csv(steps_df, "roundx_steps.csv")
+write_csv(parameters_df, "roundx_parameters.csv")
 
-parameter_tbl <- bq_table("neoepitopes", "Version_3", table = "T_Parameters")
-bq_table_upload(parameter_tbl, parameters_df, write_disposition = "WRITE_APPEND")
 
 
