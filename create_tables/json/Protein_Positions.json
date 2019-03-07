@@ -1,0 +1,12 @@
+[
+    {
+        "name" : "PROT_POS",
+        "type" : "INTEGER",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "PREDICTION_ID",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    }
+]

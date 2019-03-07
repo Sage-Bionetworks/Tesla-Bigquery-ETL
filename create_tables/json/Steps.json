@@ -1,0 +1,27 @@
+[
+    {
+        "name" : "SUBMISSION_ID",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "STEP_NAME",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "USED",
+        "type" : "BOOL",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "CHANGED",
+        "type" : "BOOL",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "COMMENT",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    }
+]

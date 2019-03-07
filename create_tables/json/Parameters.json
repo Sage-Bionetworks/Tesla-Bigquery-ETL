@@ -1,0 +1,37 @@
+[
+    {
+        "name" : "SUBMISSION_ID",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "STEP_NAME",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "PARAMETER_NAME",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "RELATIONSHIP",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "UNIT",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "VALUE",
+        "type" : "FLOAT64",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "VALUES",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    }
+]
