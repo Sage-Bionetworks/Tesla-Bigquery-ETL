@@ -16,8 +16,8 @@ mutate_roundx_patient_ids <- function(ids){
     stringr::str_remove_all(ids, "^0")
 }
 
-upload_dir     <- "syn18387397"
-vcf_upload_dir <- "syn18386504" 
+upload_dir     <- "syn18386505"
+vcf_upload_dir <- "syn18400085" 
 
 tesla_files <- c("TESLA_OUT_1.csv", "TESLA_VCF.vcf", "TESLA_OUT_3.csv",  "TESLA_YAML.yaml",
                  "TESLA_OUT_2.csv", "TESLA_OUT_4.csv")
@@ -98,6 +98,7 @@ roundx_df <-
     dplyr::select(-team) %>% 
     dplyr::bind_rows(roundx_training_df) %>% 
     dplyr::mutate(patientId = as.character(patientId)) %>% 
+    dplyr::mutate(patientId = mutate_roundx_patient_ids(patientId)) %>% 
     dplyr::mutate(DATETIME = lubridate::as_datetime(createdOn / 1000)) %>% 
     dplyr::arrange(DATETIME) %>% 
     dplyr::group_by(TEAM, patientId) %>% 
@@ -105,7 +106,7 @@ roundx_df <-
     dplyr::ungroup() %>% 
     dplyr::mutate(prefix = stringr::str_c(TEAM, patientId, num, sep = "_")) %>% 
     dplyr::select(objectId, TEAM, patientId, prefix) %>% 
-    purrr::pmap(upload_files_to_synpase) 
+    purrr::pmap(upload_files_to_synpase)
 
 setwd("../")
 file.remove("temp_dir")
