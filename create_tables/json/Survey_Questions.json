@@ -1,0 +1,22 @@
+[
+    {
+        "name" : "QUESTION_NAME",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "CATEGORY",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "QUESTION_PART_1",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "QUESTION_PART_2",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    }
+]

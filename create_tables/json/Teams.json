@@ -1,0 +1,12 @@
+[
+    {
+        "name" : "TEAM",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "SURVEY_COMMENTS",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    }
+]

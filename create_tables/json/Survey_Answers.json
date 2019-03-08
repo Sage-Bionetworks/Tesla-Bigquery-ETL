@@ -1,0 +1,17 @@
+[
+    {
+        "name" : "TEAM",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "QUESTION_NAME",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "ANSWER",
+        "type" : "BOOL",
+        "mode" : "REQUIRED"
+    }
+]
