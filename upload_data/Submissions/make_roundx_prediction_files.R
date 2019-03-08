@@ -1,5 +1,4 @@
 library(synapser)
-library(bigrquery)
 library(tidyverse)
 library(magrittr)
 library(wrapr)
@@ -55,7 +54,7 @@ ADDED_COLS <- c(
 
 
 
-file_df <- 
+submission_df <- 
     "select id, name, submissionId, patientId from syn18387034 where round = 'x'" %>% 
     synapser::synTableQuery() %>% 
     as.data.frame() %>% 
@@ -63,17 +62,11 @@ file_df <-
     dplyr::select(id, name, submissionId, patientId) %>% 
     dplyr::mutate(file_type = stringr::str_match(name, "TESLA_[:print:]+$")) %>% 
     dplyr::select(-name) %>% 
-    dplyr::filter(file_type != "TESLA_YAML.yaml")
-
-submission_df <- file_df %>% 
+    dplyr::filter(file_type != "TESLA_YAML.yaml") %>% 
     spread(key = "file_type", value = "id")
-
-# args <- submission_df[1,]
-
 
 
 create_prediction_tables <- function(args){
-    print(args)
     prediction_df <- create_prediction_table(args)
     if(!is.na(args$TESLA_OUT_2.csv) && !is.na(args$TESLA_OUT_4.csv)){
         vcf_df <- create_prediction_table(args, "vcf")
@@ -218,19 +211,23 @@ dfs <- submission_df %>%
     dplyr::group_split() %>%
     purrr::map(create_prediction_tables)
 
-df1 <- dfs %>% 
-    map("prediction_df") %>% 
-    bind_rows
+dfs %>% 
+    purrr::map("prediction_df") %>% 
+    dplyr::bind_rows() %>% 
+    readr::write_csv("roundx_predictions.csv")
 
-df2 <- dfs %>% 
-    map("protein_position_df") %>% 
-    bind_rows()
+dfs %>% 
+    purrr::map("protein_position_df") %>% 
+    dplyr::bind_rows() %>% 
+    readr::write_csv("roundx_protein_positions.csv")
 
-df3 <- dfs %>% 
-    map("variant_prediction_df") %>% 
-    bind_rows()
+dfs %>% 
+    purrr::map("variant_prediction_df") %>% 
+    dplyr::bind_rows() %>% 
+    readr::write_csv("roundx_prediction_variants.csv")
 
-df4 <- dfs %>% 
-    map("bad_prediction_df") %>% 
-    bind_rows()
+dfs %>% 
+    purrr::map("bad_prediction_df") %>% 
+    dplyr::bind_rows() %>% 
+    readr::write_csv("roundx_bad_predictions.csv")
 
