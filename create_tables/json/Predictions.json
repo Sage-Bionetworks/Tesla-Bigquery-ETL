@@ -1,13 +1,8 @@
 [
     {
-        "name" : "PREDICTION_ID",
-        "type" : "STRING",
-        "mode" : "REQUIRED"
-    },
-    {
-        "name" : "SUBMISSION_ID",
-        "type" : "STRING",
-        "mode" : "REQUIRED"
+        "name" : "RANK",
+        "type" : "INTEGER",
+        "mode" : "NULLABLE"
     },
     {
         "name" : "HLA_ALLELE",
@@ -20,7 +15,58 @@
         "mode" : "REQUIRED"
     },
     {
+        "name" : "SCORE",
+        "type" : "INTEGER",
+        "mode" : "NULLABLE"
+    },
+
+    {
         "name" : "REF_EPI_SEQ",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "PEP_LEN",
+        "type" : "INTEGER",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "HLA_ALLELE_MUT",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "HLA_ALT_BINDING",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "HLA_REF_BINDING",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "REF_ALLELE_EXP",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "ALT_ALLELE_EXP",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "RANK_METRICS",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "RANK_DESC",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "ADDN_INFO",
         "type" : "STRING",
         "mode" : "NULLABLE"
     },
@@ -35,63 +81,18 @@
         "mode" : "REQUIRED"
     },
     {
-        "name" : "RANK_METRICS",
-        "type" : "STRING",
-        "mode" : "NULLABLE"
-    },
-    {
-        "name" : "ADDN_INFO",
-        "type" : "STRING",
-        "mode" : "NULLABLE"
-    },
-    {
-        "name" : "PEP_LEN",
-        "type" : "INTEGER",
-        "mode" : "NULLABLE"
-    },
-    {
-        "name" : "HLA_ALT_BINDING",
-        "type" : "FLOAT",
-        "mode" : "NULLABLE"
-    },
-    {
-        "name" : "HLA_REF_BINDING",
-        "type" : "FLOAT",
-        "mode" : "NULLABLE"
-    },
-    {
-        "name" : "HLA_ALLELE_MUT",
-        "type" : "STRING",
-        "mode" : "NULLABLE"
-    },
-    {
-        "name" : "RANK_DESC",
-        "type" : "STRING",
-        "mode" : "NULLABLE"
-    },
-    {
-        "name" : "SCORE",
-        "type" : "INTEGER",
-        "mode" : "NULLABLE"
-    },
-    {
-        "name" : "REF_ALLELE_EXP",
-        "type" : "FLOAT",
-        "mode" : "NULLABLE"
-    },
-    {
-        "name" : "ALT_ALLELE_EXP",
-        "type" : "FLOAT",
-        "mode" : "NULLABLE"
-    },
-    {
-        "name" : "RANK",
-        "type" : "INTEGER",
-        "mode" : "NULLABLE"
-    },
-    {
         "name" : "STEP_ID",
         "type" : "STRING",
         "mode" : "NULLABLE"
+    },
+    {
+        "name" : "SUBMISSION_ID",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "PREDICTION_ID",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
     }
 ]

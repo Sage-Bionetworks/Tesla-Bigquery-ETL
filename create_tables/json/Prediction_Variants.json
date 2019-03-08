@@ -1,11 +1,11 @@
 [
     {
-        "name" : "VARIANT_ID",
+        "name" : "PREDICTION_ID",
         "type" : "STRING",
         "mode" : "REQUIRED"
     },
     {
-        "name" : "PREDICTION_ID",
+        "name" : "VARIANT_ID",
         "type" : "STRING",
         "mode" : "REQUIRED"
     }

@@ -1,12 +1,12 @@
 [
     {
-        "name" : "PROT_POS",
-        "type" : "INTEGER",
+        "name" : "PREDICTION_ID",
+        "type" : "STRING",
         "mode" : "REQUIRED"
     },
     {
-        "name" : "PREDICTION_ID",
-        "type" : "STRING",
+        "name" : "PROT_POS",
+        "type" : "INTEGER",
         "mode" : "REQUIRED"
     }
 ]
