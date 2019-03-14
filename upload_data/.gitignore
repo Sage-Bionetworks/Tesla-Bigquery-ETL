@@ -1,0 +1,4 @@
+*.Rhistory
+*.oauth
+*.csv
+*.tsv
