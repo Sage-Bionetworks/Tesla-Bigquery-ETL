@@ -36,5 +36,5 @@ file_df <-
 annotations_df <- file_df %>% 
     tidyr::nest(-entity, .key = annotations)
     
-purrr::pmap(annotations_df[1,], synapser::synSetAnnotations)
+purrr::pmap(annotations_df, synapser::synSetAnnotations)
 

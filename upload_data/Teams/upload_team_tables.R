@@ -17,8 +17,10 @@ tesla_team_df <- "SELECT * from syn8220615" %>%
     dplyr::distinct()
 
 survey_df1 <- "syn11300043" %>% 
-    create_df_from_synapse_id() %>% 
-    dplyr::rename(TEAM = V1)
+    synapser::synGet() %>% 
+    magrittr::use_series(path) %>% 
+    readr::read_csv() %>% 
+    dplyr::rename(TEAM = X1)
 
 team_df <- tesla_team_df %>% 
     dplyr::full_join(survey_df1) %>% 
@@ -52,20 +54,10 @@ team_tbl <- bigrquery::bq_table(
     "Version_3", 
     table = "Teams")
 
-bigrquery::bq_table_upload(
-    team_tbl, 
-    team_df, 
-    write_disposition = "WRITE_APPEND")
-
 survey_answers_tbl <- bigrquery::bq_table(
     "neoepitopes", 
     "Version_3",
     table = "Survey_Answers")
-
-bigrquery::bq_table_upload(
-    survey_answers_tbl, 
-    survey_answers_df, 
-    write_disposition = "WRITE_APPEND")
 
 survey_questions_tbl <- bigrquery::bq_table(
     "neoepitopes", 
@@ -73,9 +65,19 @@ survey_questions_tbl <- bigrquery::bq_table(
     table = "Survey_Questions")
 
 bigrquery::bq_table_upload(
+    team_tbl, 
+    team_df, 
+    write_disposition = "WRITE_TRUNCATE")
+
+bigrquery::bq_table_upload(
+    survey_answers_tbl, 
+    survey_answers_df, 
+    write_disposition = "WRITE_TRUNCATE")
+
+bigrquery::bq_table_upload(
     survey_questions_tbl, 
     survey_questions_df, 
-    write_disposition = "WRITE_APPEND")
+    write_disposition = "WRITE_TRUNCATE")
 
 
 
