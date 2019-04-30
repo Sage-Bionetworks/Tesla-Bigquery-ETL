@@ -1,0 +1,52 @@
+[
+    {
+        "name" : "PATIENT_ID",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "TISSUE_TYPE",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "ALT_EPI_SEQ",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "TCELL_REACTIVITY",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "CD4_IFNY",
+        "type" : "BOOL",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "CD4_TNFA",
+        "type" : "BOOL",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "CD4_IL2",
+        "type" : "BOOL",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "CD8_IFNY",
+        "type" : "BOOL",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "CD8_TNFA",
+        "type" : "BOOL",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "CD8_IL2",
+        "type" : "BOOL",
+        "mode" : "NULLABLE"
+    }
+]

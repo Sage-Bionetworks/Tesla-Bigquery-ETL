@@ -10,3 +10,9 @@ bq mk --table Version_3.Submissions json/Submissions.json
 bq mk --table Version_3.Teams json/Teams.json
 bq mk --table Version_3.Survey_Answers json/Survey_Answers.json
 bq mk --table Version_3.Survey_Questions json/Survey_Questions.json
+
+bq mk --table Version_3.Patients json/Patients.json
+bq mk --table Version_3.Patient_Alleles json/Patient_Alleles.json
+bq mk --table Version_3.Samples json/Samples.json
+bq mk --table Version_3.Validated_Bindings json/Validated_Bindings.json
+bq mk --table Version_3.Validated_Epitopes json/Validated_Epitopes.json

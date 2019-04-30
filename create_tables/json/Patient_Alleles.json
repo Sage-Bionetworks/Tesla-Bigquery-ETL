@@ -1,0 +1,12 @@
+[
+    {
+        "name" : "PATIENT_ID",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {    
+        "name" : "HLA_ALLELE",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    }
+]

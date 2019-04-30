@@ -1,0 +1,42 @@
+[
+    {
+        "name" : "PATIENT_ID",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {    
+        "name" : "DIAGNOSIS",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {    
+        "name" : "GENDER",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {    
+        "name" : "TUMOR_TYPE",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {    
+        "name" : "TUMOR_PURITY",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    },
+    {    
+        "name" : "CHECKPOINT_TREATED",
+        "type" : "BOOL",
+        "mode" : "NULLABLE"
+    },
+    {    
+        "name" : "TREATMENT_OUTCOME",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {    
+        "name" : "COLLECTED_POST_TREATMENT",
+        "type" : "BOOL",
+        "mode" : "NULLABLE"
+    }
+]

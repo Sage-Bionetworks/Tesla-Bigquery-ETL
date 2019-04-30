@@ -1,0 +1,57 @@
+[
+    {
+        "name" : "PATIENT_ID",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "TISSUE_TYPE",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "ALT_EPI_SEQ",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "HLA_ALLELE",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "LJI_BINDING",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "TCR_NANOPARTICLE",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "TCR_FLOW_I",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "TCR_FLOW_II",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "TCR_NANOPARTICLE_NUM",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "TCR_FLOW_I_NUM",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "TCR_FLOW_II_NUM",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    }
+]
