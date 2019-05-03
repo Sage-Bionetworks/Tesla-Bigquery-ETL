@@ -9,7 +9,9 @@ source("../../utils.R")
 synLogin()
 
 df <- "syn16804262" %>% 
-    create_df_from_synapse_id()
+    create_df_from_synapse_id() %>% 
+    dplyr::mutate(TISSUE_TYPE = "expanded TILs") %>% 
+    dplyr::rename(PATIENT_ID = PATIENT)
     
 tbl <- bigrquery::bq_table(
     "neoepitopes", 
