@@ -7,7 +7,7 @@ library(data.table)
 
 synLogin()
 
-source("../../utils.R")
+source("../../../utils.R")
 
 REQ_COLS <- c("HLA_ALLELE", "ALT_EPI_SEQ", "VAR_ID")
 REQ_RANKED_COLS <- c(REQ_COLS, "RANK")
