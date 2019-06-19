@@ -23,7 +23,12 @@ df <- "syn18498204" %>%
     dplyr::mutate(TCR_FLOW_I = as.character(TCR_FLOW_I)) %>% 
     dplyr::mutate(TCR_FLOW_II = as.character(TCR_FLOW_II)) %>% 
     dplyr::mutate(PATIENT_ID = as.character(PATIENT_ID)) %>% 
-    dplyr::rename(HLA_ALLELE = `HLA*_A*LLELE`)
+    dplyr::rename(HLA_ALLELE = `HLA*_A*LLELE`) %>% 
+    dplyr::mutate(HLA_ALLELE = stringr::str_remove_all(HLA_ALLELE, "\\*")) %>% 
+    dplyr::mutate(HLA_ALLELE = str_c(
+        stringr::str_sub(HLA_ALLELE, end = 1),
+        "*",
+        stringr::str_sub(HLA_ALLELE, start = 2)))
     
 tbl <- bigrquery::bq_table(
     "neoepitopes", 

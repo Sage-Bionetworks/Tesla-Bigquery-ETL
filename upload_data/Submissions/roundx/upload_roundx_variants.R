@@ -8,7 +8,7 @@ library(data.table)
 
 synLogin()
 
-source("../../utils.R")
+source("../../../utils.R")
 
 REQ_VAR_COLS <- c(
     "CHROM", 
@@ -42,16 +42,13 @@ submission_df <-
 
 
 create_variant_tables <- function(args){
-    print(args)
-
     variant_df <- create_variant_table(args)
-    
 }
 
 create_variant_table <- function(args){
     variant_df <- args$TESLA_VCF.vcf %>%
         download_from_synapse %>% 
-        data.table::fread(skip = "#CHROM") %>% 
+        data.table::fread(skip = "#CHROM", sep = "\t") %>% 
         tibble::as_tibble() %>% 
         dplyr::select(`#CHROM`, POS, ID, REF, ALT) %>% 
         magrittr::set_colnames(c("CHROM", "POS", "VAR_ID", "REF", "ALT")) 

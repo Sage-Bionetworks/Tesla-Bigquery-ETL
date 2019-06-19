@@ -6,7 +6,7 @@ library(magrittr)
 library(lubridate)
 library(bigrquery)
 
-source("../../utils.R")
+source("../../../utils.R")
 
 file_view <- "syn18387034"
 
@@ -29,13 +29,17 @@ roundx_file_df <-
         "VCF_UNRANKED_FILE",
         "VCF_FILE",
         "YAML_FILE"))
-    
-roundx_testing_df    <- readr::read_csv("roundx_testing.csv")
-roundx_validation_df <- readr::read_csv("roundx_validation.csv")
-roundx_training_df   <- readr::read_csv("roundx_training.csv")
 
-roundx_submission_df <-
-    dplyr::bind_rows(roundx_testing_df, roundx_validation_df, roundx_training_df) %>%
+
+
+roundx_submission_df <- "../../../" %>% 
+    stringr::str_c(c(
+        "roundx_testing.csv",
+        "roundx_validation.csv",
+        "roundx_training.csv"
+    )) %>% 
+    purrr::map(readr::read_csv) %>% 
+    dplyr::bind_rows() %>%
     dplyr::mutate(createdOn = lubridate::as_datetime(createdOn / 1000)) %>% 
     dplyr::select(auprc, createdOn, objectId) %>% 
     magrittr::set_colnames(c(

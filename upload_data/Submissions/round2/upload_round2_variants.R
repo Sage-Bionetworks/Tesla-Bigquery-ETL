@@ -38,7 +38,7 @@ check_columns <- function(df, required_cols){
 get_vcf_cols <- function(args){
     variant_df <- args$id %>%
         download_from_synapse %>% 
-        data.table::fread(skip = "#CHROM") %>% 
+        data.table::fread(skip = "#CHROM", sep = "\t") %>% 
         tibble::as_tibble() %>% 
         dplyr::select(`#CHROM`, POS, ID, REF, ALT) %>% 
         magrittr::set_colnames(c("CHROM", "POS", "VAR_ID", "REF", "ALT")) 

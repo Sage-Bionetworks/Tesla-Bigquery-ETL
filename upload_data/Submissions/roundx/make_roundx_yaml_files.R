@@ -7,7 +7,7 @@ library(wrapr)
 
 synLogin()
 
-source("../../utils.R")
+source("../../../utils.R")
 
 COL_FUNCS <- list(
     "used" = as.logical,

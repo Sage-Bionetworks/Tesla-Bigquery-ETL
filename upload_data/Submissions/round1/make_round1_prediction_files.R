@@ -22,14 +22,14 @@ create_df_by_file <- function(args){
     if(is.null(temp_df$STEP_ID)){
         result_df <- temp_df %>% 
             group_by_at(vars(-c(PROT_POS, VAR_ID, SOURCE_ROW_N))) %>% 
-            summarise(PROT_POS = str_c(unique(PROT_POS), collapse = ";"),
+            dplyr::summarise(PROT_POS = str_c(unique(PROT_POS), collapse = ";"),
                       VAR_ID = str_c(unique(VAR_ID), collapse = ";"),
                       SOURCE_ROW_N = str_c(unique(SOURCE_ROW_N), collapse = ";")) %>% 
             ungroup
     } else{
         result_df <- temp_df %>% 
             group_by_at(vars(-c(PROT_POS, VAR_ID, SOURCE_ROW_N, STEP_ID))) %>% 
-            summarise(PROT_POS = str_c(unique(PROT_POS), collapse = ";"),
+            dplyr::summarise(PROT_POS = str_c(unique(PROT_POS), collapse = ";"),
                       VAR_ID = str_c(unique(VAR_ID), collapse = ";"),
                       SOURCE_ROW_N = str_c(unique(SOURCE_ROW_N), collapse = ";"),
                       STEP_ID = str_c(unique(STEP_ID), collapse = ";")) %>% 
@@ -85,7 +85,7 @@ allowed_cols = c(
 
 prediction_df1 <- file_view_df %>%
     filter(str_detect(name, "[23].csv$")) %>%
-    filter(round == 1) %>%
+    filter(round == "1") %>%
     mutate(source = "fastq") %>% 
     split(1:nrow(.)) %>%
     llply(create_df_by_file, .parallel = F) %>%

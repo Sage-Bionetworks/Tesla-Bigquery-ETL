@@ -40,7 +40,7 @@ submission_df <- "../../../round12.csv" %>%
     dplyr::mutate(SUBMISSION_ID = as.character(SUBMISSION_ID)) %>% 
     dplyr::mutate(ROUND = '2')
 
-auprc_df <- "syn18411654" %>% 
+auprc_df <- "syn18694219" %>% 
     create_df_from_synapse_id() %>% 
     dplyr::select(-V1) %>%
     dplyr::rename(PATIENT_ID = PATIENT) %>% 

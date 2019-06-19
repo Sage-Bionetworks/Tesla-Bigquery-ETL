@@ -6,6 +6,8 @@ library(data.table)
 library(magrittr)
 library(bigrquery)
 
+
+
 source("../../../utils.R")
 registerDoMC(cores = detectCores() - 1)
 synLogin()
@@ -27,10 +29,10 @@ COL_FUNCS <- list(
 get_vcf_cols <- function(args){
     variant_df <- args$id %>%
         download_from_synapse %>% 
-        data.table::fread(skip = "#CHROM") %>% 
-        tibble::as_tibble() %>% 
-        dplyr::select(`#CHROM`, POS, REF, ALT) %>% 
-        magrittr::set_colnames(c("CHROM", "POS", "REF", "ALT")) 
+        data.table::fread(skip = "#CHROM", sep = "\t") %>% 
+        tibble::as_tibble() %>%
+        dplyr::select(`#CHROM`, POS, REF, ALT) %>%
+        magrittr::set_colnames(c("CHROM", "POS", "REF", "ALT"))
     check_columns(variant_df, REQ_VAR_COLS)
     variant_df <- variant_df %>% 
         convert_df_to_types() %>%
@@ -42,6 +44,8 @@ get_vcf_cols <- function(args){
             as.character(VAR_N))) %>% 
         dplyr::mutate(SUBMISSION_ID = args$submissionId)
 }
+
+
 
 check_columns <- function(df, required_cols){
     missing_columns <- required_cols[!required_cols %in% colnames(df)]
@@ -103,9 +107,8 @@ vcf_file_df <- file_view_df %>%
 
 vcf_df <- vcf_file_df %>%
     split(1:nrow(.)) %>%
-    llply(get_vcf_cols, .parallel = F) %>% 
+    map(get_vcf_cols) %>% 
     bind_rows()
-
 
 combined_df <-
     left_join(key_df, vcf_df, by = c("SUBMISSION_ID", "CHROM", "POS")) %>%

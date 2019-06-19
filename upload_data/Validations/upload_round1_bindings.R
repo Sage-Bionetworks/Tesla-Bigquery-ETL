@@ -25,11 +25,11 @@ df <- "syn18498153" %>%
     dplyr::mutate(PATIENT_ID = as.character(PATIENT_ID))
     
 tbl <- bigrquery::bq_table(
-    "neoepitopes", 
-    "Version_3", 
+    "neoepitopes",
+    "Version_3",
     table = "Validated_Bindings")
 
 bigrquery::bq_table_upload(
-    tbl, 
-    df, 
+    tbl,
+    df,
     write_disposition = "WRITE_APPEND")
