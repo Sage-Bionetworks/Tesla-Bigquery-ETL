@@ -230,6 +230,7 @@ completed <-
     dplyr::pull(submissionId)
 
 submission_df %>%
+    dplyr::slice(1:3) %>% 
     dplyr::filter(!submissionId %in% completed) %>% 
     dplyr::ungroup() %>%
     dplyr::group_by(submissionId) %>%
