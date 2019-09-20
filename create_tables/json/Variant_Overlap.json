@@ -1,0 +1,37 @@
+[
+    {
+        "name" : "TEAM",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "TEAM2",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "PATIENT_ID",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "TYPE",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "UNIQUE_VARIANTS",
+        "type" : "INTEGER",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "UNIQUE_VARIANTS2",
+        "type" : "INTEGER",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "SHARED_VARIANTS",
+        "type" : "INTEGER",
+        "mode" : "NULLABLE"
+    }
+]

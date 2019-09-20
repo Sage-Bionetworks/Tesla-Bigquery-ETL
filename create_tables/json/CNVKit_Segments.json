@@ -1,0 +1,77 @@
+[
+    {
+        "name" : "SEGMENT_ID",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "PATIENT_ID",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "CHROM",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "START",
+        "type" : "INTEGER",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "END",
+        "type" : "INTEGER",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "LOG2",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "CN",
+        "type" : "INTEGER",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "DEPTH" ,
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "PROBES" ,
+        "type" : "INTEGER",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "WEIGHT",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "MAD",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "SEM",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "STDEV",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "CI_LO",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    },
+    {
+        "name" : "CI_HI",
+        "type" : "FLOAT",
+        "mode" : "NULLABLE"
+    }
+]

@@ -16,3 +16,7 @@ bq mk --table Version_3.Patient_Alleles json/Patient_Alleles.json
 bq mk --table Version_3.Samples json/Samples.json
 bq mk --table Version_3.Validated_Bindings json/Validated_Bindings.json
 bq mk --table Version_3.Validated_Epitopes json/Validated_Epitopes.json
+
+bq mk --table Version_3.Variant_Overlap json/Variant_Overlap.json
+bq mk --table Version_3.CNVKit_Segment_Genes json/CNVKit_Segment_Genes.json
+bq mk --table Version_3.CNVKit_Segments json/CNVKit_Segments.json

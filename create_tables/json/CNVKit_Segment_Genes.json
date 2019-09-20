@@ -1,0 +1,12 @@
+[
+    {
+        "name" : "SEGMENT_ID",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    },
+    {
+        "name" : "GENE",
+        "type" : "STRING",
+        "mode" : "REQUIRED"
+    }
+]
