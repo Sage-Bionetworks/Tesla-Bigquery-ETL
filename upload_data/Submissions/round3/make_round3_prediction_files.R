@@ -69,6 +69,7 @@ submission_df <-
 
 
 create_prediction_tables <- function(args){
+    print(args)
     prediction_df <- create_prediction_table(args)
     if(!is.na(args$TESLA_OUT_2.csv) && !is.na(args$TESLA_OUT_4.csv)){
         vcf_df <- create_prediction_table(args, "vcf")
@@ -98,12 +99,22 @@ create_prediction_tables <- function(args){
         dplyr::slice(1) %>%
         dplyr::ungroup()
     
-    return(list(
-        "variant_prediction_df" = variant_prediction_df,
-        "protein_position_df" = protein_position_df,
-        "bad_prediction_df" =  bad_prediction_df,
-        "prediction_df" = prediction_df
-    ))
+    readr::write_csv(
+        variant_prediction_df, 
+        stringr::str_c(args$submissionId, "_variant_prediction_df.csv")
+    )
+    readr::write_csv(
+        protein_position_df, 
+        stringr::str_c(args$submissionId, "_protein_position_dff.csv")
+    )
+    readr::write_csv(
+        bad_prediction_df, 
+        stringr::str_c(args$submissionId, "_bad_prediction_df.csv")
+    )
+    readr::write_csv(
+        prediction_df, 
+        stringr::str_c(args$submissionId, "_prediction_df.csv")
+    )
 }
 
 
@@ -208,30 +219,21 @@ check_columns <- function(df, required_cols){
     } 
 }
 
+completed <- 
+    list.files() %>% 
+    purrr::keep(stringr::str_detect(., ".csv$")) %>% 
+    tibble::enframe(name = NULL) %>% 
+    tidyr::separate(value, sep = "_", into = c("submissionId"), rest = "drop") %>% 
+    dplyr::group_by(submissionId) %>% 
+    dplyr::summarise(count = dplyr::n()) %>% 
+    dplyr::filter(count == 4) %>% 
+    dplyr::pull(submissionId)
 
-dfs <- submission_df %>%
+submission_df %>%
+    dplyr::filter(!submissionId %in% completed) %>% 
     dplyr::ungroup() %>%
     dplyr::group_by(submissionId) %>%
     dplyr::group_split() %>%
-    purrr::map(create_prediction_tables)
+    purrr::walk(create_prediction_tables)
 
-dfs %>% 
-    purrr::map("prediction_df") %>% 
-    dplyr::bind_rows() %>% 
-    readr::write_csv("round3_predictions.csv")
-
-dfs %>% 
-    purrr::map("protein_position_df") %>% 
-    dplyr::bind_rows() %>% 
-    readr::write_csv("round3_protein_positions.csv")
-
-dfs %>% 
-    purrr::map("variant_prediction_df") %>% 
-    dplyr::bind_rows() %>% 
-    readr::write_csv("round3_prediction_variants.csv")
-
-dfs %>% 
-    purrr::map("bad_prediction_df") %>% 
-    dplyr::bind_rows() %>% 
-    readr::write_csv("round3_bad_predictions.csv")
 
