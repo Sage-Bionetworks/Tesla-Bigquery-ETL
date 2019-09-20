@@ -223,7 +223,7 @@ completed <-
     list.files() %>% 
     purrr::keep(stringr::str_detect(., ".csv$")) %>% 
     tibble::enframe(name = NULL) %>% 
-    tidyr::separate(value, sep = "_", into = c("submissionId"), rest = "drop") %>% 
+    tidyr::separate(value, sep = "_", into = c("submissionId"), extra = "drop") %>% 
     dplyr::group_by(submissionId) %>% 
     dplyr::summarise(count = dplyr::n()) %>% 
     dplyr::filter(count == 4) %>% 
