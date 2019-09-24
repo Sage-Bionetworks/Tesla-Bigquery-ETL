@@ -50,7 +50,10 @@ ADDED_COLS <- c(
     "SOURCE",
     "PREDICTION_ID"
 )
-    
+
+problem_submissions <- c(
+    "9692213"
+)
 
 submission_df <- 
     "select id, name, submissionId, patientId from syn18387034 where round = '3'" %>% 
@@ -219,21 +222,23 @@ check_columns <- function(df, required_cols){
     } 
 }
 
-completed <- 
-    list.files() %>% 
-    purrr::keep(stringr::str_detect(., ".csv$")) %>% 
-    tibble::enframe(name = NULL) %>% 
-    tidyr::separate(value, sep = "_", into = c("submissionId"), extra = "drop") %>% 
-    dplyr::group_by(submissionId) %>% 
-    dplyr::summarise(count = dplyr::n()) %>% 
-    dplyr::filter(count == 4) %>% 
+completed <-
+    list.files() %>%
+    purrr::keep(stringr::str_detect(., ".csv$")) %>%
+    tibble::enframe(name = NULL) %>%
+    tidyr::separate(value, sep = "_", into = c("submissionId"), extra = "drop") %>%
+    dplyr::group_by(submissionId) %>%
+    dplyr::summarise(count = dplyr::n()) %>%
+    dplyr::filter(count == 4) %>%
     dplyr::pull(submissionId)
 
 submission_df %>%
-    dplyr::filter(!submissionId %in% completed) %>% 
+    dplyr::filter(!submissionId %in% completed) %>%
+    dplyr::filter(!submissionId %in% problem_submissions) %>%
     dplyr::ungroup() %>%
     dplyr::group_by(submissionId) %>%
     dplyr::group_split() %>%
     purrr::walk(create_prediction_tables)
+
 
 
