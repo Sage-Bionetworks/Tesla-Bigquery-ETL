@@ -15,6 +15,7 @@ round3_file_df <-
     "select id, name, submissionId, team, patientId from syn18387034 where round = '3'" %>% 
     synapser::synTableQuery() %>% 
     as.data.frame() %>% 
+    dplyr::filter(team %in% c("Bristletail", "Weevil")) %>% 
     dplyr::mutate(
         file_type = stringr::str_match(name, "TESLA_[:print:]+$"),
         submissionId = as.character(as.integer(submissionId)),
@@ -35,7 +36,7 @@ round3_file_df <-
 
 
 
-round3_submission_df <- "../../../round3.csv" %>% 
+round3_submission_df <- "../../../project_setup/round3_late_setup/round3.csv" %>% 
     readr::read_csv() %>% 
     dplyr::mutate(createdOn = lubridate::as_datetime(createdOn / 1000)) %>% 
     dplyr::select(createdOn, objectId) %>% 

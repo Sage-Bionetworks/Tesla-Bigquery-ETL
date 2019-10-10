@@ -16,7 +16,7 @@ vcf_upload_dir <- "syn20781824"
 tesla_files <- c("TESLA_OUT_1.csv", "TESLA_VCF.vcf", "TESLA_OUT_3.csv",  "TESLA_YAML.yaml",
                  "TESLA_OUT_2.csv", "TESLA_OUT_4.csv")
 
-# challengeutils query 'select objectId, team, createdOn, patientId from evaluation_9614265 where status == "VALIDATED" and objectId <= 9692809' > round3.csv 
+# challengeutils query 'select objectId, createdOn, team, patientId from evaluation_9614265 where status == "VALIDATED" and objectId > 9692809' > round3.csv 
 
 synLogin()
 
@@ -105,7 +105,12 @@ query_df <- readr::read_csv("../round3.csv") %>%
     dplyr::rename(TEAM = insect_name) %>% 
     dplyr::select(-c(team, bird_name)) %>% 
     dplyr::filter(!objectId %in% uploaded_submissions) %>% 
-    dplyr::mutate(prefix = stringr::str_c(TEAM, patientId, sep = "_")) %>% 
+    dplyr::mutate(
+        prefix = stringr::str_c(TEAM, patientId, sep = "_"),
+        objectId = as.character(objectId),
+        patientId = as.character(patientId)
+        
+    ) %>% 
     purrr::pmap(upload_files_to_synpase)
 
 setwd("../")

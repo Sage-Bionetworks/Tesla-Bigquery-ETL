@@ -1,5 +1,4 @@
 library(synapser)
-library(bigrquery)
 library(tidyverse)
 library(magrittr)
 library(wrapr)
@@ -29,10 +28,11 @@ COL_FUNCS <- list(
 
 
 submission_df <- 
-    "select id, name, submissionId, patientId from syn18387034 where round = '3'" %>% 
+    "select id, name, team, submissionId, patientId from syn18387034 where round = '3'" %>% 
     synapser::synTableQuery() %>% 
     as.data.frame() %>% 
     tibble::as_tibble() %>% 
+    dplyr::filter(team %in% c("Bristletail", "Weevil")) %>% 
     dplyr::select(id, name, submissionId, patientId) %>% 
     dplyr::mutate(file_type = stringr::str_match(name, "TESLA_[:print:]+$")) %>% 
     dplyr::select(-name) %>% 
@@ -105,11 +105,9 @@ df <- submission_df %>%
     dplyr::group_split() %>%
     purrr::map(create_variant_tables) %>% 
     dplyr::bind_rows() %>% 
-    readr::write_csv("round3_variants.csv")
+    dplyr::select(VARIANT_ID, SUBMISSION_ID, CHROM, POS, REF, ALT, SOURCE_ROW_N) %>% 
+    readr::write_csv("round3_late_variants.csv")
 
-# tbl <- bq_table("neoepitopes", "Version_3", table = "Variants")
-# 
-# bq_table_upload(tbl, df, write_disposition = "WRITE_APPEND")
 
 
 

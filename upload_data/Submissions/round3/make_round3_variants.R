@@ -1,5 +1,4 @@
 library(synapser)
-library(bigrquery)
 library(tidyverse)
 library(magrittr)
 library(wrapr)
@@ -105,11 +104,9 @@ df <- submission_df %>%
     dplyr::group_split() %>%
     purrr::map(create_variant_tables) %>% 
     dplyr::bind_rows() %>% 
+    dplyr::select(VARIANT_ID, SUBMISSION_ID, CHROM, POS, REF, ALT, SOURCE_ROW_N) %>% 
     readr::write_csv("round3_variants.csv")
 
-# tbl <- bq_table("neoepitopes", "Version_3", table = "Variants")
-# 
-# bq_table_upload(tbl, df, write_disposition = "WRITE_APPEND")
 
 
 
