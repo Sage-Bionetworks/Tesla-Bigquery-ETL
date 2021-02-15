@@ -33,12 +33,12 @@ patient_df <- df %>%
     
 patient_tbl <- bigrquery::bq_table(
     "neoepitopes", 
-    "Version_3", 
+    "Version_4", 
     table = "Patients")
 
 allele_tbl <- bigrquery::bq_table(
     "neoepitopes", 
-    "Version_3", 
+    "Version_4", 
     table = "Patient_Alleles")
 
 bigrquery::bq_table_upload(

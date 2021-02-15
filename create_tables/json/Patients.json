@@ -38,5 +38,10 @@
         "name" : "COLLECTED_POST_TREATMENT",
         "type" : "BOOL",
         "mode" : "NULLABLE"
+    },
+        {    
+        "name" : "DMMR_MSI_STATUS",
+        "type" : "STRING",
+        "mode" : "NULLABLE"
     }
 ]

@@ -14,5 +14,7 @@ challengeutils query \
 "select objectId, team, createdOn, patientId, round, submissionName from evaluation_8116290 where status == 'VALIDATED'"\
 | tail -n +3 | head -n -1 > round12.csv
 
-
+challengeutils query \
+"select objectId, team, createdOn, patientId, round, submissionName from evaluation_9614266 where status == 'VALIDATED'"\
+> late_round12.csv
 
